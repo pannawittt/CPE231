@@ -41,11 +41,11 @@ int main() {
     }
     fill_maker.push_back(r);
     
-    vector<int> total_height;
-    for (int w=0; w<landlength-1; w++){
-        for (int l=w; l<fill_maker.size(); l++) {
-            int sum = fill_maker[l] + landheight[l];
-            total_height.push_back(sum);
+    int fill_size = fill_maker.size();
+    vector<int> total_height(landlength, 0);
+    for (int w=0; w<landlength; w++){
+        for (int l=0; l<fill_size; l++) {
+            total_height[w] += fill_maker[l] + landheight[l+w];
         }
     }
 
@@ -54,12 +54,12 @@ int main() {
         cout << u << " ";
     }
 
-    int rough = 0;
-    for (int k=1; k<=landlength-1; k++) { // for rough calculating
-        rough += total_height[k];
-    }
+    // int rough = 0;
+    // for (int k=1; k<=landlength-1; k++) { // for rough calculating
+    //     rough += total_height[k];
+    // }
 
-    cout << rough;
+    // cout << rough;
     // for (int x:landheight) {
     //     cout << x << " " ;
     // }
